@@ -12,12 +12,15 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "bcrypt": "^6.0.0",
         "cors": "^2.8.6",
         "curl": "^0.1.4",
         "dotenv": "^17.3.1",
         "express": "^5.2.1",
+        "jsonwebtoken": "^9.0.3",
         "lodash": "^4.17.23",
-        "mongoose": "^9.2.4"
+        "mongoose": "^9.2.4",
+        "mongoose-unique-validator": "^6.0.0"
     },
     "devDependencies": {
         "cross-env": "^10.1.0",

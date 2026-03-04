@@ -1,0 +1,160 @@
+﻿[dotenv@17.3.1] injecting env (4) from .env -- tip: ≡ƒöÉ prevent building .env in docker: https://dotenvx.com/prebuild
+connecting to mongodb+srv://nikhil:1234ab@cluster0.uyvhxgu.mongodb.net/testBloglist
+connected to MongoDB
+Method: GET
+Path:   /api/blogs
+Body:   undefined
+---
+Γ£ö blogs are returned as json and there are right amount of them (1135.807ms)
+Method: GET
+Path:   /api/blogs
+Body:   undefined
+---
+Γ£ö the unique identifier property of the blog posts is named id (410.297ms)
+Method: POST
+Path:   /api/blogs
+Body:   {
+  title: 'Canonical string reduction',
+  author: 'Edsger W. Dijkstra',
+  url: 'http://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD808.html',
+  likes: 12
+}
+---
+Γ£û a valid blog can be added (325.2819ms)
+Method: POST
+Path:   /api/blogs
+Body:   {
+  title: 'Test blog without likes',
+  author: 'Test Author',
+  url: 'http://testurl.com'
+}
+---
+Γ£û if likes property is missing, it will default to 0 (314.7766ms)
+Method: POST
+Path:   /api/blogs
+Body:   { author: 'Test Author', url: 'http://testurl.com', likes: 5 }
+---
+Γ£û backend responds with 400 Bad Request if title or url is missing (311.7323ms)
+Method: POST
+Path:   /api/blogs
+Body:   {
+  title: 'Unauthorized blog',
+  author: 'Hacker',
+  url: 'http://hacked.com'
+}
+---
+Γ£ö adding a blog fails with status 401 if a token is not provided (311.6517ms)
+Method: DELETE
+Path:   /api/blogs/69a7cd5bb4b10027bf3ab8b9
+Body:   undefined
+---
+Γû╢ deletion of a blog
+  Γ£û succeeds with status code 204 if id is valid (351.1816ms)
+Γ£û deletion of a blog (351.5689ms)
+Method: PUT
+Path:   /api/blogs/69a7cd5bb4b10027bf3ab8c4
+Body:   {
+  title: 'React patterns',
+  author: 'Michael Chan',
+  url: 'https://reactpatterns.com/',
+  likes: 17,
+  user: '69a7cd5bb4b10027bf3ab8c0',
+  id: '69a7cd5bb4b10027bf3ab8c4'
+}
+---
+(node:2936) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Γû╢ updating a blog
+  Γ£ö succeeds in updating the likes of a valid blog (455.8205ms)
+Γ£ö updating a blog (456.0629ms)
+Γä╣ tests 8
+Γä╣ suites 2
+Γä╣ pass 4
+Γä╣ fail 4
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 4453.1957
+
+Γ£û failing tests:
+
+test at tests\blog_api.test.js:67:1
+Γ£û a valid blog can be added (325.2819ms)
+  Error: expected 201 "Created", got 401 "Unauthorized"
+      at TestContext.<anonymous> (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\tests\blog_api.test.js:79:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ----
+      at Test._assertStatus (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:309:14)
+      at C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:365:13
+      at Test._assertFunction (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:342:13)
+      at Test.assert (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:195:23)
+      at localAssert (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:138:14)
+      at Server.<anonymous> (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:152:11)
+      at Object.onceWrapper (node:events:622:28)
+      at Server.emit (node:events:508:28)
+      at emitCloseNT (node:net:2419:8)
+      at process.processTicksAndRejections (node:internal/process/task_queues:88:21)
+
+test at tests\blog_api.test.js:89:1
+Γ£û if likes property is missing, it will default to 0 (314.7766ms)
+  Error: expected 201 "Created", got 401 "Unauthorized"
+      at TestContext.<anonymous> (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\tests\blog_api.test.js:100:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ----
+      at Test._assertStatus (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:309:14)
+      at C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:365:13
+      at Test._assertFunction (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:342:13)
+      at Test.assert (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:195:23)
+      at localAssert (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:138:14)
+      at Server.<anonymous> (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:152:11)
+      at Object.onceWrapper (node:events:622:28)
+      at Server.emit (node:events:508:28)
+      at emitCloseNT (node:net:2419:8)
+      at process.processTicksAndRejections (node:internal/process/task_queues:88:21)
+
+test at tests\blog_api.test.js:106:1
+Γ£û backend responds with 400 Bad Request if title or url is missing (311.7323ms)
+  Error: expected 400 "Bad Request", got 401 "Unauthorized"
+      at TestContext.<anonymous> (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\tests\blog_api.test.js:117:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ----
+      at Test._assertStatus (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:309:14)
+      at C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:365:13
+      at Test._assertFunction (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:342:13)
+      at Test.assert (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:195:23)
+      at localAssert (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:138:14)
+      at Server.<anonymous> (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:152:11)
+      at Object.onceWrapper (node:events:622:28)
+      at Server.emit (node:events:508:28)
+      at emitCloseNT (node:net:2419:8)
+      at process.processTicksAndRejections (node:internal/process/task_queues:88:21)
+
+test at tests\blog_api.test.js:146:5
+Γ£û succeeds with status code 204 if id is valid (351.1816ms)
+  Error: expected 204 "No Content", got 401 "Unauthorized"
+      at TestContext.<anonymous> (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\tests\blog_api.test.js:153:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1518:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ----
+      at Test._assertStatus (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:309:14)
+      at C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:365:13
+      at Test._assertFunction (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:342:13)
+      at Test.assert (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:195:23)
+      at localAssert (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:138:14)
+      at Server.<anonymous> (C:\Users\NIKHIL\New folder (2)\fullstack\part4\bloglist\node_modules\supertest\lib\test.js:152:11)
+      at Object.onceWrapper (node:events:622:28)
+      at Server.emit (node:events:508:28)
+      at emitCloseNT (node:net:2419:8)
+      at process.processTicksAndRejections (node:internal/process/task_queues:88:21)
